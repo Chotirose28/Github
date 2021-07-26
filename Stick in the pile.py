@@ -4,7 +4,6 @@ Created on Sun Jul 25 21:34:34 2021
 Stick in the pile
 @author: Chotirose
 """
-import random
 
 number_stick = int(input('How many stick (N) in the pile?: '))
 print("There are",number_stick,"sticks in the pile.")
@@ -27,13 +26,11 @@ def player(number):
         print('No you cannot take less than 1 stick!')
     return number_take
 
-def computer(number):
-    number_com_take = random.randint(1, 2)
-    if number_com_take > number_stick:
-        number_com_take = 0
+def com(number):
+    if number%3 == 0:
+        return 2
     else:
-        print('I, smart computer, take', number_com_take)
-    return number_com_take
+        return 1
 
 
 while number_stick > 0:
@@ -47,25 +44,17 @@ while number_stick > 0:
     if number_stick == 0:
         print(name + ', take the last stick.')
         print('I, smart computer, win!!!!')
-        
-    m = True
-    while m == True:
-        number_com_take = computer(number_stick)
-        if number_com_take != 0:
-            print(number_com_take)
-            number_stick = number_stick - number_com_take
-            print(number_stick)
-            m = False
-        else:
-            continue
+        break
+    
+    number_com_take = com(number_stick)
+    print('I, smart computer, take', number_com_take)
+    number_stick = number_stick - number_com_take
     if number_stick == 0:
-        print('I, smart computer, take the last stick.')
-        print(name + ' win, I, smart computer, am sad T_T')
+        print('I, smart computer take the last stick.')
+        print(name, 'win. I, smart computer, am sad T_T')
     
     
-    
-    
-    
+
         
         
         
@@ -73,8 +62,7 @@ while number_stick > 0:
         
         
 
-   
-    
+     
     
     
     
